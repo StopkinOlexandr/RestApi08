@@ -15,4 +15,14 @@ public class EventsRepositoryListImpl implements EventsRepository {
     event.setId((long) events.size() + 1);
     events.add(event);
   }
+
+  @Override
+  public List<Event> findAll() {
+    return new ArrayList<>(events);
+  }
+
+  @Override
+  public void clear() {
+    events.clear();
+  }
 }
