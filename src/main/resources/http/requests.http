@@ -23,6 +23,26 @@ Content-Type: application/json
 
 GET localhost:8080/api/users
 
+### Добавление события
+POST http://localhost:8080/api/events
+Content-Type: application/json
 
+{
+  "name": "fest",
+  "address": "Berlin",
+  "description": "Beer party"
+}
 
+### Добавление еще одного события
+POST http://localhost:8080/api/events
+Content-Type: application/json
+
+{
+  "name": "Opera",
+  "address": "Leipzig",
+  "description": "balet"
+}
+
+### Получение всех событий
+GET localhost:8080/api/events
 
