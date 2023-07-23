@@ -1,5 +1,6 @@
 package de.ait.timepad.services.impl;
 
+import de.ait.timepad.dto.EventDto;
 import de.ait.timepad.models.Event;
 import de.ait.timepad.models.Event.State;
 import de.ait.timepad.repositories.EventsRepository;
@@ -13,9 +14,15 @@ public class EventsServiceImpl implements EventsService {
 
   private final EventsRepository eventsRepository;
   @Override
-  public Event addEvent(Event event){
+  public EventDto addEvent(Event event){
     event.setState(State.PLANNED);
     eventsRepository.save(event);
-   return event;
+    return EventDto.builder()
+        .id(event.getId())
+        .name(event.getName())
+        .address(event.getAddress())
+        .state(event.getState().name())
+        .description(event.getDescription())
+        .build();
   }
 }
